@@ -3,7 +3,7 @@ import CartItem from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../features/modal/modalSlice';
 
-const CartContainer = () => {
+const CartContainer = ({quantity, setQuantity}) => {
     const { cartItems, total, amount } = useSelector((state) => state.cart);
     const dispatch = useDispatch()
 
@@ -28,7 +28,7 @@ const CartContainer = () => {
         {/* cart items */}
         <div>
           {cartItems.map((item) => {
-            return <CartItem key={item.id} {...item} />;
+            return <CartItem key={item.id} {...item} quantity={quantity} setQuantity={setQuantity} />;
           })}
         </div>
         {/* cart footer */}
